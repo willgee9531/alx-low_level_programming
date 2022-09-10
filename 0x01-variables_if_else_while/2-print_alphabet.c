@@ -3,10 +3,8 @@
 /**
  * main - Prints the alphabet in lowercase
  *
- * Return : Always 0 (success)
- *
+ * Return: Always 0 (success)
  */
-
 int main(void)/** this specifies there are no arguments taken by main */
 {
 	int ch;
