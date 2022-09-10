@@ -1,17 +1,20 @@
-#include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
+
 /**
- *main - Entry point
- *Return: Always 0 (Success)
+ * main - Prints the alphabet in lowercase
+ *
+ * Return : Always 0 (success)
  *
  */
-int main(void)
-{
-	char c;
 
-	for (c = 'a'; c <= 'z'; c++)
-		putchar(c);
-		putchar('\n');
+int main(void)/** this specifies there are no arguments taken by main */
+{
+	int ch;
+
+	for (ch = 97; ch <= 122; ch++)
+{
+	putchar(ch);
+}
+putchar(10);
 return (0);
 }
