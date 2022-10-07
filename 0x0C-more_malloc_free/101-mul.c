@@ -1,147 +1,47 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
-
 /**
- * _print - moves a string one place to the left and prints the string
- * @str: string to move
- * @l: size of string
+ * _strlen - Finds the length of a string.
+ * @str: The string to be measured
  *
- * Return: void
+ * Return: The length of the string
  */
-
-void _print(char *str, int l)
-{
-	int i, j;
-
-	i = j = 0;
-	while (i < l)
-	{
-		if (str[i] != '0')
-			j = 1;
-		if (j || i == l - 1)
-			_putchar(str[i]);
-		i++;
-	}
-
-	_putchar('\n');
-	free(str);
-}
-
-/**
- * mul - multiplies a char with a string and places the answer into dest
- * @n: char to multiply
- * @num: string to multiply
- * @num_index: last non NULL index of num
- * @dest: destination of multiplication
- * @dest_index: highest index to start addition
- *
- * Return: pointer to dset or NULL on failure
- */
-char *mul(char n, char *num, int num_index, char *dest, int dest_index)
-{
-	int j, k, mul, mulrem, add, addrem;
-
-	mulrem = addrem = 0;
-	for (j = num_index, k = dest_index; j >= 0; j--, k--)
-	{
-		mul = (n - '0') * (num[j] - '0') + mulrem;
-		mulrem = mul / 10;
-		add = (dest[k] - '0') + (mul % 10) + addrem;
-		addrem = add / 10;
-		dest[k] = add % 10 + '0';
-	}
-	for (addrem += mulrem; k >= 0 && addrem; k--)
-	{
-		add = (dest[k] - '0') + addrem;
-		addrem = add / 10;
-		dest[k] = add % 10 + '0';
-	}
-	if (addrem)
-	{
-		return (NULL);
-	}
-	return (dest);
-}
-
-/**
- * check_for_digits - checks the arguments to ensure they are digits
- * @av: pointer to arguments
- *
- * Return: 0 if digits, 1 if not
- */
-int check_for_digits(char **av)
-{
-	int i, j;
-
-	for (i = 1; i < 3; i++)
-	{
-		for (j = 0; av[i][j]; j++)
-		{
-			if (av[i][j] < '0' || av[i][j] > '9')
-				return (1);
-		}
-	}
-	return (0);
-}
-/**
- * init - initialises a string
- * @str: string to initialise
- * @l: length of string
- *
- * Return: void
- */
-void init(char *str, int l)
+int _strlen(char *str)
 {
 	int i;
 
-	for (i = 0; i < 1; i++)
-		str[i] = '0';
-	str[i] = '\0';
+	for (i = 0; str[i]; i++)
+		;
+
+	return (i);
 }
 /**
- * main - multiplies two numbers
- * @argc: argument count
- * @argv: argument vector
+ * main - multiplies two positive numbers
+ * @argc: number of arguments
+ * @argv: arrays of arguments
  *
- * Return: zero, or exit status of 98 if failure
+ * Return: always 0 (success)
  */
 int main(int argc, char *argv[])
 {
-	int l1, l2, ln, ti, i;
-	char *a;
-	char *t;
-	char e[] = "Error\n";
+	unsigned long int num1, num2, res;
 
-	if (argc != 3 || check_for_digits(argv))
+	int len_num1, len_num2;
+
+	len_num1 = _strlen(argv[1]);
+	len_num2 = _strlen(argv[2]);
+
+	for (i = 0; i <)
+
+	if (argc != 3)
 	{
-		for (ti = 0; e[ti]; ti++)
-			_putchar(e[ti]);
-		exit(98);
+		printf("Error\n");
+		return (98);
 	}
-	for (l1 = 0; argv[1][l1]; l1++)
-		;
-	for (l2 = 0; argv[2][l2]; l2++)
-		;
-	ln = l1 + l2 + 1;
-	a = malloc(ln * sizeof(char));
-	if (a == NULL)
-	{
-		for (ti = 0; e[ti]; ti++)
-			_putchar(e[ti]);
-		exit(98);
-	}
-	init(a, ln - 1);
-	for (ti = l2 - 1, i = 0; ti >= 0; ti--, i++)
-	{
-		t = mul(argv[2][ti], argv[1], l1 - 1, a, (ln - 2) - i);
-		if (t == NULL)
-		{
-			for (ti = 0; e[ti]; ti++)
-				_putchar(e[ti]);
-			free(a);
-			exit(98);
-		}
-	}
-	_print(a, ln - 1);
-	return (0);
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[2]);
+
+	res = mul(num1, num2);
+	printf("%d", res);
 }
