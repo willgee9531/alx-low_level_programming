@@ -28,8 +28,8 @@ void print_strings(const char *seperator, const unsigned int n, ...)
 		else
 		{
 			printf("%s", ptr);
-			if (i < n - 1 && separator != NULL)
-				printf("%s", separator);
+			if (i < n - 1 && seperator != NULL)
+				printf("%s", seperator);
 		}
 	}
 
